@@ -15,7 +15,13 @@ abstract class Api implements ApiInterface
 
     public function get($uri = null, $parameters = [])
     {
-        return json_decode($this->execute('get', $uri, $parameters)->getBody(), true);
+        $response = $this->execute('get', $uri, $parameters);
+
+        if ($response->getHeader('Content-Type')[0] == 'application/json') {
+            return json_encode($response->getBody(), true);
+        }
+
+        return $response->getBody();
     }
 
     public function post($uri = null, $parameters = [], $body = [])
