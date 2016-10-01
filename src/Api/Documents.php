@@ -18,4 +18,8 @@ class Documents extends Api
     {
         return $this->get('documents', $parameters);
     }
+
+    public function pdf($id) {
+        return $this->get("documents/{id}/pdf");
+    }
 }
