@@ -18,7 +18,7 @@ abstract class Api implements ApiInterface
         $response = $this->execute('get', $uri, $parameters);
 
         if ($response->getHeader('Content-Type')[0] == 'application/json') {
-            return json_encode($response->getBody(), true);
+            return json_decode($response->getBody(), true);
         }
 
         return $response->getBody();
