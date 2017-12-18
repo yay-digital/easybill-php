@@ -9,9 +9,9 @@ class SepaPayments extends Api
         return $this->post('sepa-payments', $parameters, $body);
     }
 
-    public function update($body = [], $parameters = [])
+    public function update($id = null, $body = [], $parameters = [])
     {
-        return $this->put('sepa-payments', $parameters, $body);
+        return $this->put("sepa-payments/{$id}", $parameters, $body);
     }
 
     public function find($id)
